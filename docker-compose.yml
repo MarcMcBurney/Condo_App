@@ -1,12 +1,11 @@
-version: "3.4"
 
 services:
   app:
-    build: app
+    build: .
     image: app
     restart: "no"
     volumes:
-      - ./app/:/app
+      - .:/app
       - ./app-cache/:/app-cache
     ports:
       - 7777:7777
@@ -33,12 +32,12 @@ services:
     env_file:
       - project.env
 
-  e2e-playwright:
-    entrypoint: "/bin/true" # Prevent startup on docker-compose up
-    build: e2e-playwright
-    image: e2e-playwright
-    network_mode: host
-    depends_on:
-      - app
-    volumes:
-      - ./e2e-playwright/tests:/e2e-playwright/tests
+  # e2e-playwright:
+  #   entrypoint: "/bin/true" # Prevent startup on docker-compose up
+  #   build: e2e-playwright
+  #   image: e2e-playwright
+  #   network_mode: host
+  #   depends_on:
+  #     - app
+  #   volumes:
+  #     - ./e2e-playwright/tests:/e2e-playwright/tests
