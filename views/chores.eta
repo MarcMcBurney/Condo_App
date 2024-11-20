@@ -10,23 +10,26 @@
 <% it.claimedChores.forEach(chore => { %>
   <li>
     <%= chore.title %> (<%= chore.chorecoins %> cc)
+    <form method="POST" action="/chores/<%= chore.id %>/complete">
+      <input type="submit" value="Complete"/>
+    </form>
   </li>
 <% }); %>
 </ul>
 
 <% } else { %>
 
-<p>None claimed.</p>
+<p>None available.</p>
 
 <% } %>
 
 
 <h2>Available chores</h2>
 
-<% if (it.chores && it.chores.length > 0) { %>
+<% if (it.availableChores && it.availableChores.length > 0) { %>
 
 <ul>
-<% it.chores.forEach(chore => { %>
+<% it.availableChores.forEach(chore => { %>
   <li>
     <%= chore.title %> (<%= chore.chorecoins %> cc)
     <form method="POST" action="/chores/<%= chore.id %>/claim">

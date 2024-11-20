@@ -19,4 +19,50 @@ const listChores = async () => {
   return rows;
 };
 
-export { addChore, claimChore, listChores };
+const listAvailableChores = async () => {
+  const rows = await sql`SELECT * FROM chores
+      WHERE (due_date IS NULL OR due_date > NOW())
+      AND id NOT IN (SELECT chore_id FROM chore_assignments)`;
+
+  return rows;
+};
+
+const listUserChores = async (userId) => {
+  const rows = await sql`SELECT * FROM chores
+      WHERE id IN (
+        SELECT chore_id FROM chore_assignments
+          WHERE user_id = ${userId} AND completed_at IS NULL
+      )`;
+
+  return rows;
+};
+
+const completeChore = async (choreId, userId) => {
+  await sql`UPDATE chore_assignments SET completed_at = NOW()
+        WHERE chore_id = ${choreId} AND user_id = ${userId}`;
+
+  const coinsRes = await sql`SELECT chorecoins FROM chores WHERE id = ${choreId}`;
+
+  const coins = coinsRes[0].chorecoins;
+  if (coins === 0) {
+    return;
+  }
+
+  await sql`UPDATE users SET
+        chorecoins = chorecoins + ${coins}
+        WHERE id = ${userId}`;
+
+  await sql`UPDATE users SET
+        chorecoins = chorecoins - ${coins}
+        WHERE id IN (SELECT user_id FROM chores WHERE id = ${choreId})`;
+};
+
+//
+export {
+  addChore,
+  claimChore,
+  completeChore,
+  listAvailableChores,
+  listChores,
+  listUserChores,
+};

@@ -22,7 +22,17 @@ const claimChore = async ({ params, response }) => {
 };
 
 const listChores = async ({ render }) => {
-  render("chores.eta", { chores: await choreService.listChores() });
+  render("chores.eta", {
+    availableChores: await choreService.listAvailableChores(),
+    claimedChores: await choreService.listUserChores(1),
+  });
 };
 
-export { addChore, claimChore, listChores };
+const completeChore = async ({ params, response }) => {
+  await choreService.completeChore(params.id, 1);
+
+  response.redirect("/chores");
+};
+
+// ...
+export { addChore, claimChore, completeChore, listChores };
