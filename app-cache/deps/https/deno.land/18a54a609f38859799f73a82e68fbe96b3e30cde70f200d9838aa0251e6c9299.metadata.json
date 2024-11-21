@@ -1,0 +1,33 @@
+{
+  "headers": {
+    "etag": "W/\"1058a54cf102f882a5f1ea92c6c9ddee\"",
+    "cross-origin-resource-policy": "same-origin",
+    "access-control-allow-origin": "*",
+    "last-modified": "Sat, 30 Apr 2022 16:50:18 GMT",
+    "cache-control": "public, max-age=31536000, immutable",
+    "age": "575799",
+    "date": "Wed, 13 Nov 2024 20:55:27 GMT",
+    "x-content-type-options": "nosniff",
+    "content-type": "application/javascript",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "x-amz-replication-status": "COMPLETED",
+    "vary": "accept-encoding, Origin",
+    "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+    "x-amz-version-id": "aFNcFKfgwcOlB4OgACdelEE0xTBv6oUp",
+    "x-frame-options": "DENY",
+    "x-amz-cf-pop": "FRA56-C2",
+    "cross-origin-opener-policy": "same-origin",
+    "server": "deno/gcp-europe-west3",
+    "cross-origin-embedder-policy": "same-origin",
+    "x-cache": "Hit from cloudfront",
+    "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; sandbox",
+    "server-timing": "fetchSource;dur=8",
+    "via": "http/2 edgeproxy-h",
+    "x-amz-cf-id": "kCGMGuXgG-bzUPIKmqGz0Rh8oyarry7Udv5ov9GPq7FdcyLMuUFe4A=="
+  },
+  "url": "https://deno.land/x/sqlite@v3.4.0/build/sqlite.js",
+  "now": {
+    "secs_since_epoch": 1732107123,
+    "nanos_since_epoch": 231464967
+  }
+}

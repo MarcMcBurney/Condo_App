@@ -1,11 +1,11 @@
 import * as choreService from "../../services/choreService.js";
 
-const addChore = async ({ request, response }) => {
+const addChore = async ({ request, response, user }) => {
   const body = request.body({ type: "form" });
   const params = await body.value;
 
   await choreService.addChore(
-    1,
+    user.id,
     params.get("title"),
     params.get("description"),
     params.get("chorecoins"),
@@ -15,24 +15,23 @@ const addChore = async ({ request, response }) => {
   response.redirect("/chores");
 };
 
-const claimChore = async ({ params, response }) => {
-  await choreService.claimChore(params.id, 1);
+const claimChore = async ({ params, response, user }) => {
+  await choreService.claimChore(params.id, user.id);
 
   response.redirect("/chores");
 };
 
-const listChores = async ({ render }) => {
+const completeChore = async ({ params, response, user }) => {
+  await choreService.completeChore(params.id, user.id);
+
+  response.redirect("/chores");
+};
+
+const listChores = async ({ render, user }) => {
   render("chores.eta", {
     availableChores: await choreService.listAvailableChores(),
-    claimedChores: await choreService.listUserChores(1),
+    claimedChores: await choreService.listUserChores(user.id),
   });
 };
 
-const completeChore = async ({ params, response }) => {
-  await choreService.completeChore(params.id, 1);
-
-  response.redirect("/chores");
-};
-
-// ...
 export { addChore, claimChore, completeChore, listChores };
