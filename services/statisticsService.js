@@ -4,7 +4,7 @@ const findFiveUsersWithMostCreatedChores = async () => {
   const rows = await sql`SELECT users.name as name, count(*) as count FROM users
     JOIN chores ON users.id = chores.user_id
     GROUP BY users.name
-    ORDER BY count
+    ORDER BY count DESC
     LIMIT 5`;
 
   return rows;

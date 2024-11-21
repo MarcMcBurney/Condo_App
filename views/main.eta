@@ -1,5 +1,9 @@
 <% layout("./layouts/layout.eta") %>
 
-<a href="/chores">See chores (requires login)</a><br/>
-<a href="/auth/login">Login</a><br/>
-<a href="/auth/register">Register</a><br/>
+<h1>Chore application</h1>
+
+<p>This is an application where you can add chores. Anyone using the application can view the available chores, claim them, and complete them. Payment for chores is done using <code>chorecoins</code>, which is a virtual currency with no practical value.</p>
+
+<p>If you haven't used the application before, you can start by <a href="/auth/register">registering</a>. If you have been here before, just <a href="/auth/login">log in</a>!</p>
+
+<p>If you wish to see how such an application could be built, visit the free online <a href="https://wsd.cs.aalto.fi" target="_blank">Web Software Development Course</a> offered by <a href="https://www.aalto.fi/en" target="_blank">Aalto University</a>.</p>

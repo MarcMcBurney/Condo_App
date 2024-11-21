@@ -1,0 +1,12 @@
+import { required } from "./required.ts";
+import { optionallyValid } from "../utils.ts";
+export function requiredIf(field, fieldValue) {
+  return function requiredIfRule(value, { getValue }) {
+    const val = getValue(field);
+    if (val === fieldValue) {
+      return required(value);
+    }
+    return optionallyValid(true);
+  };
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImh0dHBzOi8vZGVuby5sYW5kL3gvdmFsaWRhc2F1ckB2MC4xNS4wL3NyYy9ydWxlcy9yZXF1aXJlZF9pZi50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgdHlwZSB7IFZhbGlkaXR5LCBSdWxlIH0gZnJvbSBcIi4uL3R5cGVzLnRzXCI7XG5pbXBvcnQgeyByZXF1aXJlZCB9IGZyb20gXCIuL3JlcXVpcmVkLnRzXCI7XG5pbXBvcnQgeyBvcHRpb25hbGx5VmFsaWQgfSBmcm9tIFwiLi4vdXRpbHMudHNcIjtcblxuZXhwb3J0IGZ1bmN0aW9uIHJlcXVpcmVkSWYoZmllbGQ6IHN0cmluZywgZmllbGRWYWx1ZTogYW55KTogUnVsZSB7XG4gIHJldHVybiBmdW5jdGlvbiByZXF1aXJlZElmUnVsZSh2YWx1ZTogYW55LCB7IGdldFZhbHVlIH0pOiBWYWxpZGl0eSB7XG4gICAgY29uc3QgdmFsID0gZ2V0VmFsdWUoZmllbGQpO1xuICAgIGlmICh2YWwgPT09IGZpZWxkVmFsdWUpIHtcbiAgICAgIHJldHVybiByZXF1aXJlZCh2YWx1ZSk7XG4gICAgfVxuICAgIHJldHVybiBvcHRpb25hbGx5VmFsaWQodHJ1ZSk7XG4gIH07XG59XG4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0EsU0FBUyxRQUFRLFFBQVEsZ0JBQWdCO0FBQ3pDLFNBQVMsZUFBZSxRQUFRLGNBQWM7QUFFOUMsT0FBTyxTQUFTLFdBQVcsS0FBYSxFQUFFLFVBQWU7RUFDdkQsT0FBTyxTQUFTLGVBQWUsS0FBVSxFQUFFLEVBQUUsUUFBUSxFQUFFO0lBQ3JELE1BQU0sTUFBTSxTQUFTO0lBQ3JCLElBQUksUUFBUSxZQUFZO01BQ3RCLE9BQU8sU0FBUztJQUNsQjtJQUNBLE9BQU8sZ0JBQWdCO0VBQ3pCO0FBQ0YifQ==

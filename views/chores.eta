@@ -47,14 +47,24 @@
 
 <h2>Add a chore!</h2>
 
+<% if (it.validationErrors) { %>
+<ul>
+    <% Object.keys(it.validationErrors).forEach((attribute) => { %>
+        <% Object.values(it.validationErrors[attribute]).forEach((err) => { %>
+            <li><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>
+
 <form method="POST" action="/chores">
 Title:<br/>
-<input type="text" name="title" /><br/>
+<input type="text" name="title" value="<%= it.title ? it.title : "" %>"/><br/>
 Description:<br/>
-<textarea name="description"></textarea><br/>
+<textarea name="description"><%= it.description ? it.description : "" %></textarea><br/>
 Chorecoins:<br/>
-<input type="number" name="chorecoins" /><br/>
+<input type="number" name="chorecoins" value="<%= it.chorecoins ? it.chorecoins : "0" %>" /><br/>
 Due date:<br/>
-<input type="date" name="due_date" /><br/>
+<input type="date" name="due_date" value="<%= it.due_date ? it.due_date : "" %>" /><br/>
 <input type="submit" value="Add"/>
 </form>

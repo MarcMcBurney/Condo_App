@@ -10,4 +10,4 @@ WORKDIR /app
 
 COPY . .
 
-CMD [ "run", "--watch", "--allow-net", "--allow-read", "--allow-write", "--allow-env", "--no-check", "app.js" ]
+CMD [ "run", "--watch", "--allow-net", "--allow-read", "--allow-write", "--allow-env", "--no-check", "app-launch.js" ]
